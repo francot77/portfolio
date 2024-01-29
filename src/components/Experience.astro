@@ -1,0 +1,26 @@
+---
+import ExperienceItem from "../components/ExperienceItem.astro";
+const EXPERIENCE: any[] = [
+    {
+        date: "2022",
+        title: "TruckSystem - Freelance",
+        description:
+            "Tool to track trucks and send invoices - Expo React Native",
+    },
+    {
+        date: "2022",
+        title: "OEnglishMBG - Freelance",
+        description: "Chat app to english students - Expo React Native",
+    },
+];
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-4">
+    {
+        EXPERIENCE.map((experience) => (
+            <li class="mb-10 ms-4">
+                <ExperienceItem {...experience} />
+            </li>
+        ))
+    }
+</ol>
