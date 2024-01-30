@@ -1,13 +1,43 @@
 ---
+import Expo from "./icons/Expo.astro";
+import React from "./icons/React.astro";
+import Javascript from "./icons/Javascript.astro";
+import Carousel from "./Carousel.astro";
+const TAGS = {
+    EXPO: {
+        name: "Expo",
+        class: "bg-white text-black",
+        icon: Expo,
+    },
+    REACT: {
+        name: "React",
+        class: "bg-black text-white ",
+        icon: React,
+    },
+    REACTNATIVE: {
+        name: "React Native",
+        class: "bg-black text-white border-white border-2",
+        icon: React,
+    },
+    NODE: {
+        name: "NodeJS",
+        class: "bg-black text-white",
+        icon: "",
+    },
+    JAVASCRIPT: {
+        name: "JavaScript",
+        class: "bg-black text-white border-white border-2",
+        icon: Javascript,
+    },
+};
 const PROJECTS = [
     {
-        title: "project 1",
-        description:
-            "dadadada da da  sd awjauwadjd js asdjas djasjd ajhsioud jasod jaslkd aklsjd lkasjd lkasjd",
+        title: "Truck System",
+        description: "Tool to track trucks and send invoices",
         link: "#",
-        github: "213123",
+        github: "",
         image: "https://via.placeholder.com/300x200",
-        tags: ["HTML", "CSS", "JavaScript"],
+        tags: [TAGS.EXPO, TAGS.REACTNATIVE, TAGS.JAVASCRIPT],
     },
 ];
 ---
@@ -15,14 +45,23 @@ const PROJECTS = [
 {
     PROJECTS.map(({ title, description, tags, image }) => (
         <article>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <ul>
+            <h3 class="text-yellow-100 font-bold">{title}</h3>
+            <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                {description}
+            </p>
+            <ul class="flex gap-x-2 my-2 flex-row items-center">
                 {tags.map((tag) => (
-                    <li>{tag}</li>
+                    <li>
+                        <span
+                            class={`flex gap-x-2 rounded-full text-xs ${tag.class} px-2 py-1`}
+                        >
+                            <tag.icon class="size-4" />
+                            {tag.name}
+                        </span>
+                    </li>
                 ))}
             </ul>
-            <img src={image} alt="Imagen del proyecto" />
+            <img src="/trucksystem.webp" />
         </article>
     ))
 }
