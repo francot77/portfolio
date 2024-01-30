@@ -1,12 +1,13 @@
 ---
 import Expo from "./icons/Expo.astro";
 import React from "./icons/React.astro";
+import FireBase from "./icons/FireBase.astro";
 import Javascript from "./icons/Javascript.astro";
-import Carousel from "./Carousel.astro";
+
 const TAGS = {
     EXPO: {
         name: "Expo",
-        class: "bg-white text-black",
+        class: "bg-white border-2 border-[#000030] text-black",
         icon: Expo,
     },
     REACT: {
@@ -16,7 +17,7 @@ const TAGS = {
     },
     REACTNATIVE: {
         name: "React Native",
-        class: "bg-black text-white border-white border-2",
+        class: "bg-black text-white border-[#61dafb] border-2",
         icon: React,
     },
     NODE: {
@@ -26,8 +27,13 @@ const TAGS = {
     },
     JAVASCRIPT: {
         name: "JavaScript",
-        class: "bg-black text-white border-white border-2",
+        class: "bg-black text-white border-[#f0db4f] border-2 ",
         icon: Javascript,
+    },
+    FIREBASE: {
+        name: "FireBase",
+        class: "bg-black text-white border-[#f6820c] border-2 ",
+        icon: FireBase,
     },
 };
 const PROJECTS = [
@@ -36,8 +42,16 @@ const PROJECTS = [
         description: "Tool to track trucks and send invoices",
         link: "#",
         github: "",
-        image: "https://via.placeholder.com/300x200",
+        image: "/trucksystem.webp",
         tags: [TAGS.EXPO, TAGS.REACTNATIVE, TAGS.JAVASCRIPT],
+    },
+    {
+        title: "EnglishChat",
+        description: "Student chat to talk to teachers ",
+        link: "#",
+        github: "",
+        image: "/englishchat.webp",
+        tags: [TAGS.EXPO, TAGS.FIREBASE, TAGS.REACTNATIVE, TAGS.JAVASCRIPT],
     },
 ];
 ---
@@ -49,11 +63,11 @@ const PROJECTS = [
             <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
                 {description}
             </p>
-            <ul class="flex gap-x-2 my-2 flex-row items-center">
+            <ul class="flex gap-x-2 my-6 flex-row  flex-wrap items-center">
                 {tags.map((tag) => (
                     <li>
                         <span
-                            class={`flex gap-x-2 rounded-full text-xs ${tag.class} px-2 py-1`}
+                            class={`flex gap-x-2 rounded-full text-xs ${tag.class} my-2 px-2 py-1`}
                         >
                             <tag.icon class="size-4" />
                             {tag.name}
@@ -61,7 +75,7 @@ const PROJECTS = [
                     </li>
                 ))}
             </ul>
-            <img src="/trucksystem.webp" />
+            <img src={image} alt={`Imagen del proyecto ${title}`} />
         </article>
     ))
 }
