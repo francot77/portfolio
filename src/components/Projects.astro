@@ -1,8 +1,10 @@
 ---
 import Expo from "./icons/Expo.astro";
+import Node from "./icons/Node.astro";
 import React from "./icons/React.astro";
 import FireBase from "./icons/FireBase.astro";
 import Javascript from "./icons/Javascript.astro";
+import Carousel from "./Carousel.astro";
 
 const TAGS = {
     EXPO: {
@@ -12,7 +14,7 @@ const TAGS = {
     },
     REACT: {
         name: "React",
-        class: "bg-black text-white ",
+        class: "bg-black text-white border-[#61dafb] border-2",
         icon: React,
     },
     REACTNATIVE: {
@@ -22,8 +24,8 @@ const TAGS = {
     },
     NODE: {
         name: "NodeJS",
-        class: "bg-black text-white",
-        icon: "",
+        class: "bg-black text-white border-[#539e43] border-2",
+        icon: Node,
     },
     JAVASCRIPT: {
         name: "JavaScript",
@@ -53,13 +55,22 @@ const PROJECTS = [
         image: "/englishchat.webp",
         tags: [TAGS.EXPO, TAGS.FIREBASE, TAGS.REACTNATIVE, TAGS.JAVASCRIPT],
     },
+    {
+        title: "IoT Control",
+        description: "Web App to control bedroom devices",
+        link: "#",
+        github: "",
+        image: null,
+        video: true,
+        tags: [TAGS.REACT, TAGS.JAVASCRIPT, TAGS.NODE],
+    },
 ];
 ---
 
 {
-    PROJECTS.map(({ title, description, tags, image }) => (
+    PROJECTS.map(({ title, description, tags, image, video }) => (
         <article>
-            <h3 class="text-yellow-100 font-bold">{title}</h3>
+            <h3 class="text-yellow-100 font-bold my-3">{title}</h3>
             <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
                 {description}
             </p>
@@ -75,7 +86,26 @@ const PROJECTS = [
                     </li>
                 ))}
             </ul>
-            <img src={image} alt={`Imagen del proyecto ${title}`} />
+
+            {image ? (
+                <img
+                    class="mb-10"
+                    src={image}
+                    alt={`Imagen del proyecto ${title}`}
+                />
+            ) : null}
+            {video ? (
+                <div class="w-full justify-center flex">
+                    <iframe
+                        width="561"
+                        height="545"
+                        src="https://www.youtube.com/embed/4Bd-iCMD9_U?si=iGaa8RO39-i1BD7V"
+                        title="IoTControl"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    />
+                </div>
+            ) : null}
         </article>
     ))
 }
